@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Timer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="icon" type="image/ico" href="favicon.ico" />
+</head>
+
+<body>
+    <div id="app">
+        <div class="base-timer">
+            <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <g class="base-timer__circle">
+                <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+                <path
+                  id="base-timer-path-remaining"
+                  stroke-dasharray="283"
+                  class="base-timer__path-remaining 1200"
+                  d="
+                    M 50, 50
+                    m -45, 0
+                    a 45,45 0 1,0 90,0
+                    a 45,45 0 1,0 -90,0
+                  "
+                ></path>
+              </g>
+            </svg>
+            <span id="base-timer-label" class="base-timer__label"> 
+                <!--<script src="helper.js">
+                formatTime(1200);
+                </script>-->
+            </span>
+        </div>
+        <div style="margin-top: 90px">
+            <input id="time" type="text" class="form-control" placeholder="Time in minutes" aria-label="Username" aria-describedby="basic-addon1" style="margin-right: 90px">
+            <button id="button1" type="button" class="btn btn-success btn-lg pull-left" style="margin-right: 90px; margin-top: 20px" onclick="startTimer()">Start</button>
+            <button id="button2" type="button" class="btn btn-danger btn-lg pull-right" style="margin-top: 20px" onclick="setStopTimer()">Stop</button>
+        </div>
+    </div>
+
+    <script src="main.js">
+    </script>
+</body>
+
+</html>
