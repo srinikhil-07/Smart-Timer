@@ -1,14 +1,15 @@
 {
-  "name": "timer",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "nikhilduggirala95@gmail.com",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1"
-  }
+    "name": "timer",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
+    },
+    "author": "nikhilduggirala95@gmail.com",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1"
+    }
 }

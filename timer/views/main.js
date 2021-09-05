@@ -3,7 +3,6 @@
 const FULL_DASH_ARRAY = 283;
 const WARNING_THRESHOLD = 10;
 const ALERT_THRESHOLD = 5;
-
 const COLOR_CODES = {
     info: {
         color: "green"
@@ -17,19 +16,29 @@ const COLOR_CODES = {
         threshold: ALERT_THRESHOLD
     }
 };
-
 var TIME_LIMIT = 1200;
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 var timerInterval = null;
 let remainingPathColor = COLOR_CODES.info.color;
+setRemainingPathColor(11)
 document.getElementById("base-timer-label").innerHTML = formatTime(
     timeLeft
 );
 document.getElementById("button2").disabled = true;
+document.getElementById("features").disabled = true;
+document.getElementById("qualities").disabled = true;
+document.getElementById("button3").disabled = true;
 
 function onTimesUp() {
     clearInterval(timerInterval);
+    setRemainingPathColor(11)
+    document.getElementById("features").disabled = false;
+    document.getElementById("qualities").disabled = false;
+    document.getElementById("button3").disabled = false;
+    document.getElementById("button1").disabled = true;
+    document.getElementById("button2").disabled = true;
+    document.getElementById("features").disabled = true;
 }
 
 function startTimer() {
@@ -37,7 +46,6 @@ function startTimer() {
     document.getElementById("button1").disabled = true;
     document.getElementById("button2").disabled = false;
     let givenTime = document.getElementById("time").value
-    console.log("Given time is " + givenTime)
     if (givenTime != 0) {
         TIME_LIMIT = givenTime * 60
     }
@@ -49,22 +57,19 @@ function startTimer() {
         );
         setCircleDasharray();
         setRemainingPathColor(timeLeft);
-
+        console.log("Time left:" + timeLeft);
         if (timeLeft === 0) {
             onTimesUp();
         }
     }, 1000);
-    console.log("time interval: " + timerInterval)
 }
 
 function formatTime(time) {
     const minutes = Math.floor(time / 60);
     let seconds = time % 60;
-
     if (seconds < 10) {
         seconds = `0${seconds}`;
     }
-
     return `${minutes}:${seconds}`;
 }
 
@@ -84,6 +89,12 @@ function setRemainingPathColor(timeLeft) {
         document
             .getElementById("base-timer-path-remaining")
             .classList.add(warning.color);
+    } else {
+        document
+            .getElementById("base-timer-path-remaining")
+            .classList.remove(alert.color);
+        document.getElementById("base-timer-path-remaining")
+            .classList.add(info.color);
     }
 }
 
@@ -101,30 +112,55 @@ function setCircleDasharray() {
         .setAttribute("stroke-dasharray", circleDasharray);
 }
 
-function setStopTimer() {
+function stopTimer() {
     if (document.querySelector('#button2').textContent == 'Reset') {
-        console.log("This is " + document.querySelector('#button2').textContent);
         document.querySelector('#button1').textContent = 'Start';
         document.querySelector('#button2').textContent = 'Stop';
         document.getElementById("button1").disabled = false;
         document.getElementById("button2").disabled = true;
         document.getElementById("time").disabled = false;
+        document.getElementById("features").disabled = false;
+        document.getElementById("qualities").disabled = false;
+        document.getElementById("button3").disabled = false;
+        sendFeedback()
         TIME_LIMIT = 1200
         document.getElementById("base-timer-label").innerHTML = formatTime(
             TIME_LIMIT
         );
         return;
     }
-    console.log("This is " + document.querySelector('#button2').textContent);
     clearInterval(timerInterval)
     document.getElementById("button1").disabled = false;
     document.querySelector('#button1').textContent = 'Resume';
     document.querySelector('#button2').textContent = 'Reset';
 }
 
-function setTimer() {
-    document.getElementById("base-timer-label").innerHTML = formatTime(
-        timeLeft
-    );
+function sendFeedback() {
+    let timeConsumed = TIME_LIMIT - timeLeft
+    let quality = $("#qualities").val();
+    let type = $("#features").val();
+    let feedback = {
+        time: timeConsumed,
+        quality: quality,
+        type: type
+    };
+    console.log("JSON to send" + JSON.stringify(feedback))
+    $.ajax({
+        type: 'POST',
+        contentType: "application/json; charset=utf-8",
+        url: '/server/catalyst_feedback_function/support/feedback', //Ensure that 'to_do_list_function' is the package name of your function
+        data: JSON.stringify(feedback),
+        success: function(data) {
+
+        }
+    });
+    document.getElementById("button1").disabled = false;
+    document.getElementById("button2").disabled = true;
+    document.getElementById("time").disabled = false;
+    document.getElementById("features").disabled = true;
+    document.getElementById("qualities").disabled = true;
+    document.getElementById("button3").disabled = true;
+    timePassed = 0;
+
 }
 //${remainingPathColor}

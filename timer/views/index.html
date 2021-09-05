@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head xmlns="http://www.w3.org/2000/svg">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Timer</title>
@@ -17,7 +17,7 @@
 <body>
     <div id="app">
         <div class="base-timer">
-            <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <svg class="base-timer__svg" viewBox="0 0 100 100">
               <g class="base-timer__circle">
                 <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
                 <path
@@ -42,10 +42,28 @@
         <div style="margin-top: 90px">
             <input id="time" type="text" class="form-control" placeholder="Time in minutes" aria-label="Username" aria-describedby="basic-addon1" style="margin-right: 90px">
             <button id="button1" type="button" class="btn btn-success btn-lg pull-left" style="margin-right: 90px; margin-top: 20px" onclick="startTimer()">Start</button>
-            <button id="button2" type="button" class="btn btn-danger btn-lg pull-right" style="margin-top: 20px" onclick="setStopTimer()">Stop</button>
+            <button id="button2" type="button" class="btn btn-danger btn-lg pull-right" style="margin-top: 20px" onclick="stopTimer()">Stop</button>
+            <!--<div class="summary"></div>-->
+            <div class="type" style="margin-top: 100px">
+                <select name="features" id="features">
+                    <option value="Interview-Prep">Interview-Prep</option>
+                    <option value="Job">Job</option>
+                    <option value="Projects">Projects</option>
+                </select>
+            </div>
+            <div class="quality" style="margin-top: 50px">
+                <select name="qualities" id="qualities">
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+            </div>
+            <div class="text-center" style="margin-top: 30px">
+                <button id="button3" type="button" class="btn btn-primary" onclick="sendFeedback()">Submit</button>
+            </div>
         </div>
     </div>
-
+    </div>
     <script src="main.js">
     </script>
 </body>
