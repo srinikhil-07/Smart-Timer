@@ -5,7 +5,7 @@ app.use('/static', express.static('views'))
 app.use('/api/timer', require('./timer/api'));
 // Redirect root to /books
 app.get('/', (req, res) => {
-    res.redirect('/timer');
+    res.redirect('/static/index.html');
 });
 // Start the server
 const port = process.env.PORT || 8080;
