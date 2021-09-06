@@ -40,7 +40,6 @@ function onTimesUp() {
     document.getElementById("button3").disabled = false;
     document.getElementById("button1").disabled = true;
     document.getElementById("button2").disabled = true;
-    document.getElementById("features").disabled = true;
 }
 
 function startTimer() {
