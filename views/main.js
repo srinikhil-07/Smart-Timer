@@ -31,6 +31,8 @@ document.getElementById("qualities").disabled = true;
 document.getElementById("button3").disabled = true;
 
 function onTimesUp() {
+    var mp3_url = 'https://media.geeksforgeeks.org/wp-content/uploads/20190531135120/beep.mp3';
+    (new Audio(mp3_url)).play()
     clearInterval(timerInterval);
     setRemainingPathColor(11)
     document.getElementById("features").disabled = false;
@@ -161,6 +163,5 @@ function sendFeedback() {
     document.getElementById("qualities").disabled = true;
     document.getElementById("button3").disabled = true;
     timePassed = 0;
-
 }
 //${remainingPathColor}
