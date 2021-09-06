@@ -25,3 +25,7 @@ async function update(id, data) {
 async function create(data) {
     return await update(null, data);
 }
+module.exports = {
+    create,
+    update,
+};

@@ -150,18 +150,26 @@ function sendFeedback() {
     $.ajax({
         type: 'POST',
         contentType: "application/json; charset=utf-8",
-        url: '/server/catalyst_feedback_function/support/feedback', //Ensure that 'to_do_list_function' is the package name of your function
+        url: '../api/timer', //Ensure that 'to_do_list_function' is the package name of your function
         data: JSON.stringify(feedback),
         success: function(data) {
-
+            document.getElementById("button1").disabled = false;
+            document.getElementById("button2").disabled = true;
+            document.getElementById("time").disabled = false;
+            document.getElementById("features").disabled = true;
+            document.getElementById("qualities").disabled = true;
+            document.getElementById("button3").disabled = true;
+            timePassed = 0;
         }
     });
-    document.getElementById("button1").disabled = false;
-    document.getElementById("button2").disabled = true;
-    document.getElementById("time").disabled = false;
-    document.getElementById("features").disabled = true;
-    document.getElementById("qualities").disabled = true;
-    document.getElementById("button3").disabled = true;
-    timePassed = 0;
+
+}
+
+function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 }
 //${remainingPathColor}
