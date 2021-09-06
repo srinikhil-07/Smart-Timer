@@ -13,11 +13,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <link rel="icon" type="image/ico" href="favicon.ico" />
-    <script src="https://www.gstatic.com/firebasejs/ui/5.0.0/firebase-ui-auth.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/5.0.0/firebase-ui-auth.css" />
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="1044268415103-d10j3r529cqt27kn2hsl2q9a6m5jv0si.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
     <div id="app">
         <div class="base-timer">
             <svg class="base-timer__svg" viewBox="0 0 100 100">
