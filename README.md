@@ -13,4 +13,4 @@ Backend work in progress.
 
 Front end basic UI for now. 
 
-![alt text](https://github.com/Nikhil0487/Smart-Timer/blob/main/Timer.png?raw=true)
+![alt text](https://github.com/Nikhil0487/Smart-Timer/blob/main/Timer.png?raw=true =250x250)
