@@ -11,6 +11,6 @@ General idea:
 
 Backend work in progress.
 
-Front end UI
+Front end basic UI for now. 
 
 ![alt text](https://github.com/Nikhil0487/Smart-Timer/blob/main/Timer.png?raw=true)
