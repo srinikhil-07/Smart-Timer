@@ -10,3 +10,7 @@ General idea:
 
 
 Backend work in progress.
+
+Front end UI
+
+![alt text](https://github.com/Nikhil0487/Smart-Timer/blob/main/Timer.png?raw=true)
