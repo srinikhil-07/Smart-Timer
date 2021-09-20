@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html>
 
-<head xmlns="http://www.w3.org/2000/svg">
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Timer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <title>Timer</title>
     <link rel="icon" type="image/ico" href="favicon.ico" />
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="1044268415103-d10j3r529cqt27kn2hsl2q9a6m5jv0si.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="1044268415103-d10j3r529cqt27kn2hsl2q9a6m5jv0si.apps.googleusercontent.com">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Timer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" data-toggle="modal" data-target="#exampleModalCenter">Settings <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="#">Features</a>
+                <a class="nav-item nav-link" href="#">Pricing</a>
+                <a class="nav-item nav-link disabled" href="#">Disabled</a>
+            </div>
+        </div>
+    </nav>
     <div id="app">
         <div class="base-timer">
             <svg class="base-timer__svg" viewBox="0 0 100 100">
@@ -38,37 +53,82 @@
                 ></path>
               </g>
             </svg>
-            <span id="base-timer-label" class="base-timer__label"> 
-                <!--<script src="helper.js">
-                formatTime(1200);
-                </script>-->
+            <span id="base-timer-label" class="base-timer__label">
             </span>
         </div>
-        <div style="margin-top: 90px">
-            <input id="time" type="text" class="form-control" placeholder="Time in minutes" aria-label="Username" aria-describedby="basic-addon1" style="margin-right: 90px">
-            <button id="button1" type="button" class="btn btn-success btn-lg pull-left" style="margin-right: 90px; margin-top: 20px" onclick="startTimer()">Start</button>
-            <button id="button2" type="button" class="btn btn-danger btn-lg pull-right" style="margin-top: 20px" onclick="stopTimer()">Stop</button>
-            <!--<div class="summary"></div>-->
-            <div class="type" style="margin-top: 100px">
-                <select name="features" id="features">
-                    <option value="Interview-Prep">Interview-Prep</option>
-                    <option value="Job">Job</option>
-                    <option value="Projects">Projects</option>
-                    <option value="Fitness">Projects</option>
-                </select>
-            </div>
-            <div class="quality" style="margin-top: 50px">
-                <select name="qualities" id="qualities">
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                </select>
-            </div>
-            <div class="text-center" style="margin-top: 30px">
-                <button id="button3" type="button" class="btn btn-primary" onclick="sendFeedback()">Submit</button>
+        <div style="margin-top: 50px">
+            <button id="button1" type="button" class="btn btn-success btn-lg pull-left" onclick="startTimer()">Start</button>
+            <button id="button2" type="button" class="btn btn-danger btn-lg pull-right" style="margin-left: 250px" onclick="stopTimer()">Stop</button>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Time Quality</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Time</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Time in minutes">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword3" class="col-sm-2 col-form-label">Task</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                </div>
+                            </div>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-form-label col-sm-2 pt-0">Quality</legend>
+                                    <div class="col-sm-10">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                                            <label class="form-check-label" for="gridRadios1">
+                                  First radio
+                                </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                            <label class="form-check-label" for="gridRadios2">
+                                  Second radio
+                                </label>
+                                        </div>
+                                        <div class="form-check disabled">
+                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+                                            <label class="form-check-label" for="gridRadios3">
+                                  Third disabled radio
+                                </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="form-group row">
+                                <div class="col-sm-2">Checkbox</div>
+                                <div class="col-sm-10">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                        <label class="form-check-label" for="gridCheck1">
+                                Example checkbox
+                              </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button id="Submit" type="button" class="btn btn-primary" onclick="getNewTask()" data-dismiss="modal">Add</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
     </div>
     <script src="main.js">
     </script>
