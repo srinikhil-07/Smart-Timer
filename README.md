@@ -1,12 +1,17 @@
 # Smart-Timer
-Timer web app that tracks productivity
+Timer full stack web app to track my productivity. 
 
-General idea:
+Inspired by POMODORO technique, I wanted to track my timer quality.
 
-1. Basic timer UI,
-2. After evry timer reset/finish, send timer quality to backend,
-3. Backend is Google cloud app engine with Firebase storage
-4. Analytics on last n days or today's/yesterday's timer quality of output
+Not every session is focused, so this web app should track the type of activity I do and the quality of it.
+
+- [x] HTML/CSS/JS frontend
+- [x] GCP App-Engine backend 
+- [x] Backend is NodeJS with Express framework
+
+Still a work in progress.
+
+I am noting down my ideas and issues here https://github.com/Nikhil0487/Smart-Timer/projects/2
 
 
-Backend work in progress.
+![alt text](https://github.com/Nikhil0487/Smart-Timer/blob/main/Timer.png)
