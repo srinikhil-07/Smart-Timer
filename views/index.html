@@ -14,7 +14,9 @@
 </head>
 
 <body>
-
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <div id="g_id_onload" data-client_id="1044268415103-d10j3r529cqt27kn2hsl2q9a6m5jv0si.apps.googleusercontent.com" data-login_uri="http://localhost:8080/static/index.html" data-your_own_param_1_to_login="any_value" data-your_own_param_2_to_login="any_value">
+    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -29,7 +31,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" data-toggle="modal" data-target="#exampleModalCenter">Settings <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">Features</a>
+                <a class="nav-item nav-link" data-toggle="modal" data-target="#timerModal">Features</a>
                 <a class="nav-item nav-link" href="#">Pricing</a>
                 <a class="nav-item nav-link disabled" href="#">Disabled</a>
             </div>
@@ -73,15 +75,15 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Time</label>
+                                <label for="inputPassword3" class="col-sm-2 col-form-label">Task</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Time in minutes">
+                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Task">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputPassword3" class="col-sm-2 col-form-label">Task</label>
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Details</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Describe the task">
                                 </div>
                             </div>
                             <fieldset class="form-group">
@@ -91,40 +93,56 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
                                             <label class="form-check-label" for="gridRadios1">
-                                  First radio
+                                  High
                                 </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
                                             <label class="form-check-label" for="gridRadios2">
-                                  Second radio
+                                  Medium
                                 </label>
                                         </div>
                                         <div class="form-check disabled">
-                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
                                             <label class="form-check-label" for="gridRadios3">
-                                  Third disabled radio
+                                  Low
                                 </label>
                                         </div>
                                     </div>
                                 </div>
                             </fieldset>
+                        </form>
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button id="Submit" type="button" class="btn btn-primary" onclick="getNewTask()" data-dismiss="modal">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="timerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Timer Settings</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
                             <div class="form-group row">
-                                <div class="col-sm-2">Checkbox</div>
+                                <label for="inputPassword3" class="col-sm-2 col-form-label">Time</label>
                                 <div class="col-sm-10">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                        <label class="form-check-label" for="gridCheck1">
-                                Example checkbox
-                              </label>
-                                    </div>
+                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Time in minutes">
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer ">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button id="Submit" type="button" class="btn btn-primary" onclick="getNewTask()" data-dismiss="modal">Add</button>
+                        <button id="Submit" type="button" class="btn btn-primary" onclick="getNewTask()" data-dismiss="modal">Set</button>
                     </div>
                 </div>
             </div>
