@@ -15,3 +15,8 @@ I am noting down my ideas and issues here https://github.com/Nikhil0487/Smart-Ti
 
 
 ![alt text](https://github.com/Nikhil0487/Smart-Timer/blob/main/Timer.png)
+
+After every session, note down the quality.
+
+
+![alt text](https://github.com/Nikhil0487/Smart-Timer/blob/main/Quality.png)
