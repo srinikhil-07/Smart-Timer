@@ -27,27 +27,21 @@ document.getElementById("base-timer-label").innerHTML = formatTime(
     timeLeft
 );
 document.getElementById("button2").disabled = true;
-document.getElementById("features").disabled = true;
-document.getElementById("qualities").disabled = true;
-document.getElementById("button3").disabled = true;
 
 function onTimesUp() {
     var mp3_url = 'https://media.geeksforgeeks.org/wp-content/uploads/20190531135120/beep.mp3';
     (new Audio(mp3_url)).play()
     clearInterval(timerInterval);
     setRemainingPathColor(11)
-    document.getElementById("features").disabled = false;
-    document.getElementById("qualities").disabled = false;
-    document.getElementById("button3").disabled = false;
     document.getElementById("button1").disabled = true;
     document.getElementById("button2").disabled = true;
 }
 
 function startTimer() {
-    document.getElementById("time").disabled = true;
+    //document.getElementById("time").disabled = true;
     document.getElementById("button1").disabled = true;
     document.getElementById("button2").disabled = false;
-    let givenTime = document.getElementById("time").value
+    let givenTime = document.getElementById("inputPassword3").value
     if (givenTime != 0) {
         TIME_LIMIT = givenTime * 60
     }
@@ -120,10 +114,6 @@ function stopTimer() {
         document.querySelector('#button2').textContent = 'Stop';
         document.getElementById("button1").disabled = false;
         document.getElementById("button2").disabled = true;
-        document.getElementById("time").disabled = false;
-        document.getElementById("features").disabled = false;
-        document.getElementById("qualities").disabled = false;
-        document.getElementById("button3").disabled = false;
         sendFeedback()
         TIME_LIMIT = 1200
         document.getElementById("base-timer-label").innerHTML = formatTime(
@@ -156,10 +146,6 @@ function sendFeedback() {
         success: function(data) {
             document.getElementById("button1").disabled = false;
             document.getElementById("button2").disabled = true;
-            document.getElementById("time").disabled = false;
-            document.getElementById("features").disabled = true;
-            document.getElementById("qualities").disabled = true;
-            document.getElementById("button3").disabled = true;
             timePassed = 0;
         }
     });
