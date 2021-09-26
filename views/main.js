@@ -1,7 +1,7 @@
 // Credit: Mateusz Rybczonec
 const FULL_DASH_ARRAY = 283;
-const WARNING_THRESHOLD = 10;
-const ALERT_THRESHOLD = 5;
+var WARNING_THRESHOLD = 10;
+var ALERT_THRESHOLD = 5;
 const COLOR_CODES = {
     info: {
         color: "green"
@@ -34,16 +34,19 @@ function onTimesUp() {
     clearInterval(timerInterval);
     setRemainingPathColor(11)
     $('#qualityModal').modal('show');
+    document.getElementById("button1").disabled = false;
+    document.getElementById("button2").disabled = true;
 }
 
 function startTimer() {
-    //document.getElementById("time").disabled = true;
     document.getElementById("button1").disabled = true;
     document.getElementById("button2").disabled = false;
     let givenTime = document.getElementById("inputPassword3").value
     if (givenTime != 0) {
         TIME_LIMIT = givenTime * 60
     }
+    WARNING_THRESHOLD = givenTime * 0.25;
+    ALERT_THRESHOLD = givenTime * 0.10;
     timerInterval = setInterval(() => {
         timePassed = timePassed += 1;
         timeLeft = TIME_LIMIT - timePassed;
@@ -113,7 +116,7 @@ function stopTimer() {
         document.querySelector('#button2').textContent = 'Stop';
         document.getElementById("button1").disabled = false;
         document.getElementById("button2").disabled = true;
-        sendFeedback()
+        $('#qualityModal').modal('show');
         TIME_LIMIT = 1200
         document.getElementById("base-timer-label").innerHTML = formatTime(
             TIME_LIMIT
