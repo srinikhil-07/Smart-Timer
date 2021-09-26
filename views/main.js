@@ -33,8 +33,7 @@ function onTimesUp() {
     (new Audio(mp3_url)).play()
     clearInterval(timerInterval);
     setRemainingPathColor(11)
-    document.getElementById("button1").disabled = true;
-    document.getElementById("button2").disabled = true;
+    $('#qualityModal').modal('show');
 }
 
 function startTimer() {
@@ -129,13 +128,15 @@ function stopTimer() {
 
 function sendFeedback() {
     let timeConsumed = TIME_LIMIT - timeLeft
-    let quality = $("#qualities").val();
-    let type = $("#features").val();
+    let quality = $("#quality").val();
+    let type = $("#taskName").val();
+    let description = $("#taskDetails").val();
     let feedback = {
         user: userId,
         time: timeConsumed,
         quality: quality,
-        type: type
+        type: type,
+        details: description
     };
     console.log("JSON to send" + JSON.stringify(feedback))
     $.ajax({

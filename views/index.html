@@ -15,16 +15,13 @@
 
 <body>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <div id="g_id_onload" data-client_id="1044268415103-d10j3r529cqt27kn2hsl2q9a6m5jv0si.apps.googleusercontent.com" data-login_uri="http://localhost:8080/static/index.html" data-your_own_param_1_to_login="any_value" data-your_own_param_2_to_login="any_value">
+    <div id="g_id_onload" data-client_id="1044268415103-d10j3r529cqt27kn2hsl2q9a6m5jv0si.apps.googleusercontent.com" data-context="signin" data-login_uri="http://localhost:8080/static/index.html" data-auto_select="true">
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="1044268415103-d10j3r529cqt27kn2hsl2q9a6m5jv0si.apps.googleusercontent.com">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Timer</a>
+        <a class="navbar-brand">Timer</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -63,7 +60,7 @@
             <button id="button2" type="button" class="btn btn-danger btn-lg pull-right" style="margin-left: 250px" onclick="stopTimer()">Stop</button>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="qualityModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -77,13 +74,21 @@
                             <div class="form-group row">
                                 <label for="inputPassword3" class="col-sm-2 col-form-label">Task</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="taskName" placeholder="Task">
+                                    <!--<input type="text" class="form-control" id="taskName" placeholder="Task">-->
+
+                                    <select name="features" id="features" class="form-control">
+                                            <option value="Interview-Prep">Interview-Prep</option>
+                                            <option value="Job">Job</option>
+                                            <option value="Projects">Projects</option>
+                                            <option value="Fitness">Fitness</option>
+                                    </select>
+
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Details</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="taskDetails" placeholder="Describe the task">
+                                    <input type="text" class="form-control" id="taskDetails" placeholder="Describe the task">
                                 </div>
                             </div>
                             <fieldset class="form-group">
@@ -115,7 +120,7 @@
                     </div>
                     <div class="modal-footer ">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button id="Submit" type="button" class="btn btn-primary" onclick="getNewTask()" data-dismiss="modal">Add</button>
+                        <button id="Submit" type="button" class="btn btn-primary" onclick="sendFeedback()" data-dismiss="modal">Add</button>
                     </div>
                 </div>
             </div>
@@ -135,14 +140,14 @@
                             <div class="form-group row">
                                 <label for="inputPassword3" class="col-sm-2 col-form-label">Time</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Time in minutes">
+                                    <input type="text" class="form-control" id="inputPassword3" placeholder="Time in minutes">
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer ">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button id="Submit" type="button" class="btn btn-primary" onclick="getNewTask()" data-dismiss="modal">Set</button>
+                        <button id="Submit" type="button" class="btn btn-primary" data-dismiss="modal">Set</button>
                     </div>
                 </div>
             </div>
