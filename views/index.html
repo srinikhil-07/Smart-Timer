@@ -11,12 +11,13 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <title>Timer</title>
     <link rel="icon" type="image/ico" href="favicon.ico" />
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="1044268415103-d10j3r529cqt27kn2hsl2q9a6m5jv0si.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 </head>
 
 <body>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <div id="g_id_onload" data-client_id="1044268415103-d10j3r529cqt27kn2hsl2q9a6m5jv0si.apps.googleusercontent.com" data-context="signin" data-login_uri="http://localhost:8080/static/index.html" data-auto_select="true">
-    </div>
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -76,7 +77,7 @@
                                 <div class="col-sm-10">
                                     <!--<input type="text" class="form-control" id="taskName" placeholder="Task">-->
 
-                                    <select name="features" id="features" class="form-control">
+                                    <select name="features" id="taskName" class="form-control">
                                             <option value="Interview-Prep">Interview-Prep</option>
                                             <option value="Job">Job</option>
                                             <option value="Projects">Projects</option>
@@ -91,31 +92,19 @@
                                     <input type="text" class="form-control" id="taskDetails" placeholder="Describe the task">
                                 </div>
                             </div>
-                            <fieldset class="form-group">
-                                <div class="row">
-                                    <legend class="col-form-label col-sm-2 pt-0">Quality</legend>
-                                    <div class="col-sm-10">
-                                        <div class="form-check" id="quality">
-                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                                            <label class="form-check-label" for="gridRadios1">
-                                  High
-                                </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                                            <label class="form-check-label" for="gridRadios2">
-                                  Medium
-                                </label>
-                                        </div>
-                                        <div class="form-check disabled">
-                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
-                                            <label class="form-check-label" for="gridRadios3">
-                                  Low
-                                </label>
-                                        </div>
-                                    </div>
+                            <div class="form-group row">
+                                <label for="inputPassword3" class="col-sm-2 col-form-label">Quality</label>
+                                <div class="col-sm-10">
+                                    <!--<input type="text" class="form-control" id="taskName" placeholder="Task">-->
+
+                                    <select name="features" id="taskQuality" class="form-control">
+                                            <option value="High">High</option>
+                                            <option value="Low">Low</option>
+                                            <option value="Medium">Medium</option>
+                                    </select>
+
                                 </div>
-                            </fieldset>
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer ">

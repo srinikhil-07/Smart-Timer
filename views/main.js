@@ -128,7 +128,7 @@ function stopTimer() {
 
 function sendFeedback() {
     let timeConsumed = TIME_LIMIT - timeLeft
-    let quality = $("#quality").val();
+    let quality = $("#taskQuality").val();
     let type = $("#taskName").val();
     let description = $("#taskDetails").val();
     let feedback = {
@@ -168,4 +168,3 @@ function onSignIn(googleUser) {
     console.log("ID Token: " + id_token);
     userId = profile.getId()
 }
-//${remainingPathColor},
