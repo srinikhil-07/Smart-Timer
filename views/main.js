@@ -29,9 +29,6 @@ document.getElementById("base-timer-label").innerHTML = formatTime(
 document.getElementById("button2").disabled = true;
 
 function onTimesUp() {
-    var mp3_url = 'https://media.geeksforgeeks.org/wp-content/uploads/20190531135120/beep.mp3';
-    (new Audio(mp3_url)).play()
-    w.terminate();
     clearInterval(timerInterval);
     setRemainingPathColor(11)
     $('#qualityModal').modal('show');
@@ -60,6 +57,8 @@ function startTimer() {
             setRemainingPathColor(timeLeft);
             console.log("Time left:" + timeLeft);
             if (timeLeft === 0) {
+                notifyTimersUp()
+                w.terminate();
                 onTimesUp();
             }
         };
@@ -175,4 +174,16 @@ function onSignIn(googleUser) {
     var id_token = googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token);
     userId = profile.getId()
+}
+
+function notifyTimersUp() {
+    if (Notification.permission === "granted") {
+        var notification = new Notification("Time's up!");
+    } else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then(function(permission) {
+            if (permission === "granted") {
+                var notification = new Notification("Time's up!");
+            }
+        });
+    }
 }
