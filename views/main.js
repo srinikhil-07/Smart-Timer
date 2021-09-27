@@ -21,7 +21,7 @@ let timeLeft = TIME_LIMIT;
 var timerInterval = null;
 let remainingPathColor = COLOR_CODES.info.color;
 var userId
-
+var w;
 setRemainingPathColor(11)
 document.getElementById("base-timer-label").innerHTML = formatTime(
     timeLeft
@@ -47,19 +47,23 @@ function startTimer() {
     }
     WARNING_THRESHOLD = givenTime * 0.25;
     ALERT_THRESHOLD = givenTime * 0.10;
-    timerInterval = setInterval(() => {
-        timePassed = timePassed += 1;
-        timeLeft = TIME_LIMIT - timePassed;
-        document.getElementById("base-timer-label").innerHTML = formatTime(
-            timeLeft
-        );
-        setCircleDasharray();
-        setRemainingPathColor(timeLeft);
-        console.log("Time left:" + timeLeft);
-        if (timeLeft === 0) {
-            onTimesUp();
-        }
-    }, 1000);
+    if (typeof(Worker) !== "undefined") {
+        w = new Worker("worker.js");
+        w.onmessage = function(event) {
+            timePassed = timePassed += 1;
+            timeLeft = TIME_LIMIT - timePassed;
+            document.getElementById("base-timer-label").innerHTML = formatTime(
+                timeLeft
+            );
+            setCircleDasharray();
+            setRemainingPathColor(timeLeft);
+            console.log("Time left:" + timeLeft);
+            if (timeLeft === 0) {
+                w.terminate();
+                onTimesUp();
+            }
+        };
+    }
 }
 
 function formatTime(time) {
@@ -111,6 +115,7 @@ function setCircleDasharray() {
 }
 
 function stopTimer() {
+    w.terminate();
     if (document.querySelector('#button2').textContent == 'Reset') {
         document.querySelector('#button1').textContent = 'Start';
         document.querySelector('#button2').textContent = 'Stop';
