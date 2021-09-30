@@ -177,11 +177,15 @@ function onSignIn(googleUser) {
 }
 
 function notifyTimersUp() {
+    console.log("notify")
     if (Notification.permission === "granted") {
+        console.log("notify granted")
         var notification = new Notification("Time's up!");
     } else if (Notification.permission !== "denied") {
+        console.log("notify denied")
         Notification.requestPermission().then(function(permission) {
             if (permission === "granted") {
+                console.log("notify granted now")
                 var notification = new Notification("Time's up!");
             }
         });
